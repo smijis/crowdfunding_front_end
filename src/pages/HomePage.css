@@ -1,0 +1,9 @@
+#fundraiser-list {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  column-gap: 40px;
+  row-gap: 40px;
+  margin: 50px;
+  place-content: center;
+  font-family: sans-serif;
+}
