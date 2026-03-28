@@ -22,5 +22,18 @@ export default function useFundraiser(fundraiserId) {
     // This time we pass the fundraiserId to the dependency array so that the hook will re-run if the fundraiserId changes.
   }, [fundraiserId]);
 
-  return { fundraiser, isLoading, error };
+  const refetch = () => {
+    setIsLoading(true);
+    getFundraiser(fundraiserId)
+        .then((fundraiser) => {
+            setFundraiser(fundraiser);
+            setIsLoading(false);
+        })
+        .catch((error) => {
+            setError(error);
+            setIsLoading(false);
+        });
+};
+
+  return { fundraiser, isLoading, error, refetch };
 }
