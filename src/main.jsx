@@ -9,9 +9,11 @@ import LoginPage from "./pages/LoginPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import CreateFundraiserPage from "./pages/CreateFundraiserPage.jsx";
+import EditFundraiserPage from "./pages/EditFundraiserPage.jsx"
 
 //import our components
 import NavBar from "./components/NavBar.jsx";
+import { AuthProvider } from "./components/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,17 +22,20 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage />},
       { path: "/login", element: <LoginPage />},
+      { path: "/fundraiser", element: <CreateFundraiserPage />},
       { path: "/fundraiser/:id", element: <FundraiserPage />},
+      { path: "/fundraiser/:id/edit", element: <EditFundraiserPage />},
       { path: "/about", element: <AboutPage />},
       { path: "/contact", element: <ContactPage />},
-      { path: "/fundraiser", element: <CreateFundraiserPage />},
     ]
   },
 ]);
 
 ReactDom.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+        </AuthProvider>
   </React.StrictMode>
 ); //tells react where to put base content (comes from index.html <div> part)
 

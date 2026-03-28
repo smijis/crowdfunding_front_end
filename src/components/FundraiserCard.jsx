@@ -11,7 +11,7 @@ function FundraiserCard(props){
                 <img src ={fundraiserData.image} alt="" />
                 <h3>{fundraiserData.title}</h3>
             </Link>
-            <p>Description of the fundraiser.</p>
+                <p>{fundraiserData.suburb}, {fundraiserData.postcode}</p>
         </div>
     );
 };
