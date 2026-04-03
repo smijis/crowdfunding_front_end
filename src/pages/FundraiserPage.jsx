@@ -35,49 +35,63 @@ function FundraiserPage() {
 console.log("auth.username:", auth.username);
 
    return (
-        <div>
-           <h2 class="title">{fundraiser.title}</h2>
-            <img src={fundraiser.image} className="fundraiser-image" alt="Image of Fundraiser" />
-           <h3>Created by: {fundraiser.owner_username}</h3>
-           <h3>Created on: {fundraiser.date_created?.slice(0, 10)}</h3>
-           <h3>Status: {fundraiser.is_open ? "Open" : "Closed"}</h3>
-           <h3>Fundraiser closes on: {fundraiser.deadline?.slice(0, 10)}</h3>
-           <p>{fundraiser.description}</p>
-            <br />
-           {auth.token && fundraiser.owner === parseInt(auth.userId) && (
-                <Link to={`/fundraiser/${id}/edit`}>Edit Fundraiser</Link>
-           )}
-           <h3>Pledges:</h3>
-                <div>
-            <button onClick={toggleModal}>Make a Pledge</button>
-            {isOpen && (
-                <div className="pledge-form">
-                    <PledgeForm fundraiserId={id} onPledgeSuccess={refetch} />
-                </div>
+        <div className="page-container">
+            <div className="title-button-container">
+                <h2 className="title">{fundraiser.title}</h2>
+                    {auth.token && fundraiser.owner === parseInt(auth.userId) && (
+                    <Link to={`/fundraiser/${id}/edit`} className="edit-fundraiser">Edit Fundraiser</Link>
             )}
             </div>
-           <ul>
-               {fundraiser.pledges.map((pledgeData, key) => { //.map says to loop through the pledges and for each one, do this function =>
-                    return (
-                        <li key={key}>
-                            {pledgeData.amount} from {pledgeData.supporter}
-                            {" - "}{pledgeData.comment}
-                            {"  "}
-                            {auth.token && pledgeData.supporter === auth.username && (
-                                <button onClick={() => setEditingPledge(pledgeData)}>Edit Pledge</button>
-                            )}
-                            {editingPledge?.id === pledgeData.id && (
-                                <div className="edit-pledge-form">
-                                    <EditPledgeForm pledgeData={editingPledge} onEditSuccess={() => {
-                                        refetch();
-                                        setEditingPledge(null);
-                                    }}/>
-                                </div>
-                            )}
-                        </li>
-                    )
-                })}
-            </ul>
+            <div className="fundraiser-container">
+                <img src={fundraiser.image} className="fundraiser-image" alt="Image of Fundraiser" />
+                <div className="right-column">
+                    <div className="information">
+                        <h3>Created by: {fundraiser.owner_username}</h3>
+                        <h3>Created on: {fundraiser.date_created?.slice(0, 10)}</h3>
+                        <h3>Status: {fundraiser.is_open ? "Open" : "Closed"}</h3>
+                        <h3>Fundraiser closes on: {fundraiser.deadline?.slice(0, 10)}</h3>
+                    </div>
+                    <p className="description">{fundraiser.description}</p>
+                    </div>
+                </div>
+           <div className="pledges-card">
+                <div className="pledges-header">
+                    <h3>Pledges</h3>
+                    {auth.token && (
+                    <button className="secondary-btn" onClick={toggleModal}>
+                        Make a Pledge
+                    </button>
+                    )}
+                </div>
+
+                {isOpen && (
+                    <div className="pledge-form">
+                    <button className="x" onClick={() => setIsOpen(false)}>✕</button>
+                    <PledgeForm fundraiserId={id} onPledgeSuccess={refetch} />
+                    </div>
+                )}
+
+                <ul className="pledge-list">
+                    {fundraiser.pledges.map((pledgeData, key) => (
+                    <li key={key}>
+                        <span className="pledge-info">
+                        {pledgeData.amount} from {pledgeData.supporter} - {pledgeData.comment}
+                        </span>
+                        {auth.token && pledgeData.supporter === auth.username && (
+                        <button className="edit-btn" onClick={() => setEditingPledge(pledgeData)}>Edit</button>
+                        )}
+                        {editingPledge?.id === pledgeData.id && (
+                        <div className="edit-pledge-form">
+                            <button className="x" onClick={() => setEditingPledge(null)}>✕</button>
+                            <EditPledgeForm pledgeData={editingPledge} onEditSuccess={() => {
+                            refetch();
+                            }}/>
+                        </div>
+                        )}
+                    </li>
+                    ))}
+                </ul>
+                </div>
         </div>
     );
 };
