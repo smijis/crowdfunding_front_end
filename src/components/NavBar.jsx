@@ -1,51 +1,51 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import useAuth from "../hooks/use-auth.js";
+import logo from "../assets/logo.png";
+import Footer from "./Footer.jsx"
 
 function NavBar() {
     const {auth, setAuth} = useAuth();
 
     const handleLogout = () => {
         window.localStorage.removeItem("token");
-        setAuth({ token: null});
+        window.localStorage.removeItem("userId");
+        setAuth({ token: null, userId: null }); 
     };
 
     const isLoggedIn = !!auth.token;
 
-    console.log(auth)
+    const navigate = useNavigate();
 
     return (
-        <div>
-            <div id="nav-actions">
-                {isLoggedIn ? (
-                    <Link to="/profile" className="nav-button profile-button">
-                        My profile
-                    </Link>
-                ) : (
-                    null
-                )}
-            </div>
 
             <div id="navbar">
+                
                 <nav>
-                    <Link to="/">Home</Link>
-                    <Link to="/about">About</Link>
-                    <Link to="/contact">Contact</Link>
-                    {auth.token ? (
-                        <Link to="/" onClick={handleLogout}>
-                        Log Out
-                        </Link>
-                        ) : (
-                        <Link to="/login">Login</Link>
+                    <div className="nav-left">
+                        <img src={logo} className="logo" alt="Community Change logo" />
+                        <NavLink to="/">Home</NavLink>
+                        <NavLink to="/about">About</NavLink>
+                        <NavLink to="/contact">Contact</NavLink>
+                    </div>
+                    <div className="nav-right">
+                        <button className="primary-btn" onClick={() => navigate("/fundraiser")}>
+                            Create a Fundraiser
+                        </button>
+                        {isLoggedIn && (
+                            <NavLink to={`/profile/${auth.userId}`}>My profile</NavLink>
                         )}
-                    <Link to="/fundraiser">
-                        <button>Create a Fundraiser</button>
-                    </Link>
+                        {auth.token ? (
+                            <button className="link-btn" onClick={handleLogout}>Log Out</button>
+                        ) : (
+                            <NavLink to="/login">Login</NavLink>
+                        )}
+                    </div>
                 </nav>
-                <Outlet /> 
+                <Outlet />
+                <Footer />
             </div>
-        </div>
-    );
-};
+    )
+}
 
 export default NavBar;

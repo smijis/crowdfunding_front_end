@@ -1,3 +1,48 @@
+.banner-container {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.banner-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+}
+
+.banner-content h1 {
+  color: white;
+  font-size: 2.8rem;
+  padding: 0 0 15px 0;
+}
+
+.banner-content p {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.bannerimage {
+  display: block;
+  width: 100%;
+  height: 400px;
+  object-position: center 70%;
+  object-fit: cover;
+}
+
 #fundraiser-list {
   display: grid;
   grid-template-columns: 30% 30% 30%;

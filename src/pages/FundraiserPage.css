@@ -1,0 +1,9 @@
+.title h2 {
+  font-size: 2rem;
+}
+.fundraiser-image {
+  width: 50%;
+  height: 50vh;
+  object-fit: cover;
+  display: block;
+}

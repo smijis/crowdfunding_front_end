@@ -1,5 +1,55 @@
 #navbar nav {
+  position: relative;
+  z-index: 10;
   display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
   gap: 20px;
   font-family: sans-serif;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-top: 8px;
+}
+
+#navbar {
+  position: relative;
+  z-index: 10;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-left {
+  margin: 0 0 0 32px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav-right {
+  margin: 0 32px 0 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  padding: 0;
+  color: var(--text);
+  font-weight: bold;
+}
+
+.link-btn:hover {
+  color: var(--primary);
+}
+
+.logo {
+  margin-top: 10px;
 }

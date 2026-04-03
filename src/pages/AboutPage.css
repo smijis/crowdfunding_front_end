@@ -1,23 +1,103 @@
-h1 {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  color: #333;
+.orange-banner {
+  background-color: var(--primary);
+  padding: 100px 20px;
+  gap: 20px;
+  text-align: center;
+  align-items: center;
 }
 
-h2 {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  color: #333;
+.coins {
+  width: 8%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
 }
 
-p {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+.orange-banner h1 {
+  color: white;
+  font-size: 3rem;
   margin: 0;
-  padding: 0;
-  color: #333;
+}
+
+.orange-banner h2 {
+  color: white;
+  font-size: 1.4rem;
+  color: white;
+  font-weight: normal;
+  margin: 25px;
+}
+
+.orange-banner p {
+  color: white;
+  max-width: 700px;
+  margin: 30px auto 0 auto;
+  line-height: 1.6;
+}
+
+.questions-container {
+  display: flex;
+  align-items: stretch;
+  min-height: 380px;
+}
+
+.questions-content {
+  flex: 1;
+  padding: 80px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  background: var(--cardbackground);
+}
+
+.questions-content p {
+  border-left: 4px solid var(--primary);
+  padding: 20px 16px;
+  font-style: italic;
+  color: #363636;
+  background: none;
+  box-shadow: none;
+}
+
+.questionsimage {
+  width: 50%;
+  height: auto;
+  
+}
+
+.about-container {
+  display: flex;
+  align-items: stretch;
+  min-height: 380px;
+  align-items: center;
+}
+
+.about-description {
+  background: white;
+  padding: 60px 80px;
+  line-height: 1.9;
+}
+
+.about-description h2 {
+  color: var(--primary);
+}
+
+.about-description p {
+  line-height: 1.9;
+}
+
+.aboutimage {
+  width: 50%;
+  height: auto;
+}
+
+.final-content {
+  text-align: center;
+  padding: 100px 20px;
+  background: var(--cardbackground);
+}
+
+.final-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }

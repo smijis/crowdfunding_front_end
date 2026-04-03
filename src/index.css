@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap");
+
+:root {
+  --primary: #eb862e;
+  --secondary: #0056b3;
+  --hoverbutton: #c67025;
+  --cardbackground: #faf4ee;
+  --background: #ffffff;
+  --text: #363636;
+  --heading-font: "League Spartan", sans-serif;
+  --body-font: "Inter", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+a {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: var(--body-font);
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+}
+
+.logo {
+  height: 50px;
+  margin: 0px 0px 16px 0px;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+a.active {
+  color: var(--secondary);
+}
+
+.primary-btn {
+  background-color: var(--primary);
+  color: white;
+  cursor: pointer;
+  padding: 14px 28px;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+}
+
+.primary-btn:hover {
+  background-color: var(--secondary);
+}

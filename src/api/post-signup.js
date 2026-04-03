@@ -1,3 +1,5 @@
+import handleSubmit from '../components/LoginForm';
+
 async function postSignup(username, password, name, suburb, email) {
     const url = `${import.meta.env.VITE_API_URL}/users/`;
     const response = await fetch(url, {
@@ -13,7 +15,7 @@ async function postSignup(username, password, name, suburb, email) {
         "email": email,
       }),
     });
-  
+
     if (!response.ok) {
       const fallbackError = `Error trying to signup`;
   
@@ -24,7 +26,7 @@ async function postSignup(username, password, name, suburb, email) {
       const errorMessage = data?.detail ?? fallbackError;
       throw new Error(errorMessage);
     }
-  
+
     return await response.json();
   }
   

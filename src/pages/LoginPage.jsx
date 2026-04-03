@@ -8,8 +8,8 @@ const TabbedForms = () => {
     const [activeTab, setActiveTab] = useState('login');
 
     return (
-        <div className="tab-container">
-            <nav className="tab-nav">
+        <div className="form-container">
+            <div className="tab-nav">
                 <button
                     className={activeTab === 'login' ? 'active' : ''}
                     onClick={() => setActiveTab('login')}
@@ -22,7 +22,7 @@ const TabbedForms = () => {
                 >
                     Sign Up
                 </button>
-            </nav>
+            </div>
 
             <div className="tab-content">
                 {activeTab === 'login' ? (

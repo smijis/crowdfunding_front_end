@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
 
 //import our pages
 import HomePage from "./pages/HomePage.jsx";
@@ -9,7 +10,8 @@ import LoginPage from "./pages/LoginPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import CreateFundraiserPage from "./pages/CreateFundraiserPage.jsx";
-import EditFundraiserPage from "./pages/EditFundraiserPage.jsx"
+import EditFundraiserPage from "./pages/EditFundraiserPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 
 //import our components
 import NavBar from "./components/NavBar.jsx";
@@ -27,6 +29,7 @@ const router = createBrowserRouter([
       { path: "/fundraiser/:id/edit", element: <EditFundraiserPage />},
       { path: "/about", element: <AboutPage />},
       { path: "/contact", element: <ContactPage />},
+      { path: "/profile/:id", element: <ProfilePage />}
     ]
   },
 ]);

@@ -31,14 +31,16 @@ function FundraiserPage() {
    if (error) {
     return (<p>{error.message}</p>)
    };
+   console.log("supporter:", fundraiser.pledges[0]?.supporter);
+console.log("auth.username:", auth.username);
 
    return (
         <div>
-           <h2>{fundraiser.title}</h2>
-           <img src={fundraiser.image} alt="homeless cat" />
-           <h3>Created by: {fundraiser.owner}</h3>
+           <h2 class="title">{fundraiser.title}</h2>
+            <img src={fundraiser.image} className="fundraiser-image" alt="Image of Fundraiser" />
+           <h3>Created by: {fundraiser.owner_username}</h3>
            <h3>Created on: {fundraiser.date_created?.slice(0, 10)}</h3>
-           <h3>{`Status: ${fundraiser.is_open}`}</h3>
+           <h3>Status: {fundraiser.is_open ? "Open" : "Closed"}</h3>
            <h3>Fundraiser closes on: {fundraiser.deadline?.slice(0, 10)}</h3>
            <p>{fundraiser.description}</p>
             <br />
@@ -61,7 +63,7 @@ function FundraiserPage() {
                             {pledgeData.amount} from {pledgeData.supporter}
                             {" - "}{pledgeData.comment}
                             {"  "}
-                            {auth.token && pledgeData.supporter === parseInt(auth.userId) && (
+                            {auth.token && pledgeData.supporter === auth.username && (
                                 <button onClick={() => setEditingPledge(pledgeData)}>Edit Pledge</button>
                             )}
                             {editingPledge?.id === pledgeData.id && (

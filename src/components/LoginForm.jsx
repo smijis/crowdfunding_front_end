@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import postLogin from "../api/post-login.js";
 import useAuth from "../hooks/use-auth.js";
+import "./LoginForm.css"
 
 function LoginForm() {
     const navigate = useNavigate();
@@ -33,6 +34,7 @@ function LoginForm() {
                setAuth({
                 token: response.token,
                 userId: response.user_id,
+                username: response.username,
                });
                navigate("/");
             }).catch((error) => {
@@ -45,11 +47,12 @@ function LoginForm() {
 
     return (
         <form>
+            <h1>Welcome Back</h1>
             <div>
                 <label htmlFor="username">Username:</label>
                 <input type="text"
                 id="username"
-                placeholder="Enter username"
+                placeholder="Username"
                 onChange={handleChange}
                 />
             </div>
@@ -63,7 +66,7 @@ function LoginForm() {
                 />
             </div>
             {error && <p style={{color: "red"}}>{error}</p>}
-            <button type="submit" onClick={handleSubmit}>Login</button>
+            <button type="submit" onClick={handleSubmit} className="login-btn">Login</button>
         </form>
     );
 }
