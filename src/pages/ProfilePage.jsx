@@ -23,14 +23,17 @@ function ProfilePage() {
 return (
         <div className="profile-page-container">
             <div className="profile-card">
-                <h2>{userProfile.user.name}</h2>
-                <p>{userProfile.user.username}</p>
-                <h2>{userProfile.user.suburb} {userProfile.user.postcode}</h2>
-                <p>{userProfile.userId}</p>
+                <div className="profile-avatar">
+                    {userProfile.user.username?.slice(0,2).toUpperCase()}
+                </div>
+                <div className="profile-info">
+                    <h2>{userProfile.user.name || userProfile.user.username}</h2>
+                    <p>@{userProfile.user.username} | {userProfile.user.suburb} {userProfile.user.postcode}</p>
+                </div>
             </div>    
-        
+
+            <h3 className="section-label">My fundraisers</h3>        
             <div className="fundraiser-list">
-                <h3>My Fundraisers</h3>
                 {userProfile.fundraisers.length === 0 && (
                     <p>No fundraisers yet.</p>
                     )}
@@ -39,8 +42,8 @@ return (
                 ))}
             </div>
 
+            <h3 className="section-label">My pledges</h3>
             <div className="pledge-list">
-                <h3>My Pledges</h3>
                 {userProfile.pledges.length === 0 && (
                     <p>No pledges yet.</p>
                     )}

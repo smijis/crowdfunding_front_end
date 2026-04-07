@@ -7,9 +7,25 @@ footer {
 }
 
 .logo2 {
-  width: 15%;
+  width: 10%;
 }
 
 .ps {
   font-size: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  footer {
+    line-height: 25px;
+  }
+
+  .logo2 {
+    width: 30%;
+  }
+
+  .ps {
+    line-height: 15px;
+    font-size: 0.6rem;
+    margin-top: 10px;
+  }
 }

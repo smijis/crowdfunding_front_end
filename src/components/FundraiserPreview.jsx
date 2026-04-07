@@ -11,7 +11,7 @@ function FundraiserPreview(props) {
                 <img src ={fundraiserData.image} alt="" />
                 <h3>{fundraiserData.title}</h3>
             </Link>
-                <p>Deadline: {fundraiserData.deadline?.slice(0, 10)}</p>
+                <p>Closes on: {fundraiserData.deadline?.slice(0, 10)}</p>
         </div>
     );
 };

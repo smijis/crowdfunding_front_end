@@ -38,7 +38,7 @@ function AboutPage() {
                 </div>
                 <div className="final-content">
                 {/* Section 4: Start A Fundraiser */}
-                    <h2>Your community, your project.</h2>
+                    <h2>Your community, <br className="mobile-break" />your project.</h2>
                     <button className="primary-btn" onClick={() => navigate("/fundraiser")}>
                             Create a Fundraiser
                         </button>

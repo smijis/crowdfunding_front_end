@@ -3,9 +3,16 @@ function PledgePreview(props) {
 
     return (
         <div className="pledge-card">
-                <h3>{pledgeData.fundraiser_title}</h3>
-                <p>{pledgeData.amount}</p>
-                <p>{pledgeData.comment}</p>
+                <h3>
+                    <a 
+                    href={`/fundraiser/${pledgeData.fundraiser_id}`} 
+                    style={{ textDecoration: 'none', fontSize: '16px', }}
+                    >
+                    {pledgeData.fundraiser_title}
+                    </a>
+                </h3>
+                <p>${pledgeData.amount}</p>
+                <p>"{pledgeData.comment}"</p>
         </div>
     );
 };

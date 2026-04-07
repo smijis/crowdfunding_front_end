@@ -3,9 +3,11 @@ import "./NavBar.css";
 import useAuth from "../hooks/use-auth.js";
 import logo from "../assets/logo.png";
 import Footer from "./Footer.jsx"
+import { useState } from "react";
 
 function NavBar() {
     const {auth, setAuth} = useAuth();
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const handleLogout = () => {
         window.localStorage.removeItem("token");
@@ -14,7 +16,6 @@ function NavBar() {
     };
 
     const isLoggedIn = !!auth.token;
-
     const navigate = useNavigate();
 
     return (
@@ -43,7 +44,26 @@ function NavBar() {
                             <NavLink to="/login">Login</NavLink>
                         )}
                     </div>
+                    <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+                    <span /><span /><span />
+                </button>
                 </nav>
+
+                <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
+                    <NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
+                    <NavLink to="/about" onClick={() => setMenuOpen(false)}>About</NavLink>
+                    <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
+                    <NavLink to="/fundraiser" onClick={() => setMenuOpen(false)}>Create a Fundraiser</NavLink>
+                    {isLoggedIn && (
+                        <NavLink to={`/profile/${auth.userId}`} onClick={() => setMenuOpen(false)}>My profile</NavLink>
+                    )}
+                    {auth.token ? (
+                        <NavLink to="/login" onClick={() => {handleLogout (); setMenuOpen(false);}}>Log Out</NavLink>
+                    ) : (
+                        <NavLink to="/login" onClick={() => setMenuOpen(false)}>Login</NavLink>
+                    )}
+                </div>
+
                 <div style={{ flex: 1 }}>
     <Outlet />
 </div>

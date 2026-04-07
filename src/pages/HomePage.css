@@ -45,10 +45,22 @@
 
 #fundraiser-list {
   display: grid;
-  grid-template-columns: 30% 30% 30%;
-  column-gap: 40px;
-  row-gap: 40px;
-  margin: 50px;
-  place-content: center;
-  font-family: sans-serif;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 32px;
+  margin: 40px 24px;
+}
+
+@media (max-width: 600px) {
+  #fundraiser-list {
+    grid-template-columns: 1fr;
+    margin: 24px 16px;
+  }
+
+  .banner-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .bannerimage {
+    height: 280px;
+  }
 }

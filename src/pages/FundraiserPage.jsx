@@ -31,8 +31,6 @@ function FundraiserPage() {
    if (error) {
     return (<p>{error.message}</p>)
    };
-   console.log("supporter:", fundraiser.pledges[0]?.supporter);
-console.log("auth.username:", auth.username);
 
    return (
         <div className="page-container">
@@ -48,6 +46,7 @@ console.log("auth.username:", auth.username);
                     <div className="information">
                         <div className="info-row"><h4>Created by: </h4><h3> {fundraiser.owner_username}</h3></div>
                         <div className="info-row"><h4>Location:</h4><h3> {fundraiser.suburb}, {fundraiser.postcode}</h3></div>
+                        <div className="info-row"><h4>Goal:</h4><h3> ${fundraiser.goal}</h3></div>
                         <div className="info-row"><h4>Created on:</h4><h3> {fundraiser.date_created?.slice(0, 10)}</h3></div>
                         <div className="info-row"><h4>Status:</h4><h3> {fundraiser.is_open ? "Open" : "Closed"}</h3></div>
                         <div className="info-row"><h4>Fundraiser closes on:</h4><h3> {fundraiser.deadline?.slice(0, 10)}</h3></div>
@@ -86,14 +85,15 @@ console.log("auth.username:", auth.username);
                         <span className="pledge-info">
                             ${pledgeData.amount} from {pledgeData.supporter || "Anonymous"} - {pledgeData.comment}
                         </span>
-                        {auth.token && pledgeData.supporter === auth.username && (
-                        <button className="edit-btn" onClick={() => setEditingPledge(pledgeData)}>Edit</button>
+                        {auth.token && (pledgeData.supporter === auth.username || pledgeData.is_mine) && (
+                            <button className="edit-btn" onClick={() => setEditingPledge(pledgeData)}>Edit</button>
                         )}
                         {editingPledge?.id === pledgeData.id && (
                         <div className="edit-pledge-form">
                             <button className="x" onClick={() => setEditingPledge(null)}>✕</button>
                             <EditPledgeForm pledgeData={editingPledge} onEditSuccess={() => {
                             refetch();
+                            setEditingPledge(null);
                             }}/>
                         </div>
                         )}

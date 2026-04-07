@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./ContactPage.css";
-import ccmail from "../assets/ccmail.png"
 
 function ContactPage() {
     const [formData, setFormData] = useState({
