@@ -49,9 +49,21 @@ Please include the following in your readme doc:
 
 - A link to the deployed project (https://shecodescrowdfunding.netlify.app/)
 - A screenshot of the homepage
-  ![Homepage Screenshot](./assets/homepage-screenshot.png)
+  <img
+  src="/assets/homepage-screenshot.png"
+  alt="Homepage Screenshot"
+  style={{ maxWidth: "100%", height: "auto" }}
+  />
 - A screenshot of the fundraiser creation page/A screenshot of the fundraiser creation form
-  ![Create Fundraiser Screenshot](./assets/createfundraiser-screenshot.png)
+  <img
+  src="/assets/createfundraiser-screenshot.png"
+  alt="Create Fundraiser Screenshot"
+  style={{ maxWidth: "100%", height: "auto" }}
+  />
 - A screenshot of a fundraiser with pledges
-  ![Fundraiser with Pledges Screenshot](./assets/fundraiserwithpledges-screenshot.png)
+  <img
+  src="/assets/fundraiserwithpledges-screenshot.png"
+  alt="Fundraiser with Pledges Screenshot"
+  style={{ maxWidth: "100%", height: "auto" }}
+  />  
 - A screenshot of the resulting page when an unauthorized user attempts to edit a fundraiser (optional, depending on whether or not this functionality makes sense in your app!) - For my app, the option to edit a fundraiser is not visible unless you are the owner of the fundraiser.
