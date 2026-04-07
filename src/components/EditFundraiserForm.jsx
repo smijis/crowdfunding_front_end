@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import putFundraiser from "../api/put-fundraiser.js";
-import useAuth from "../hooks/use-auth.js"
+import useAuth from "../hooks/use-auth.js";
+import "./EditFundraiserForm.css";
 
 function EditFundraiserForm({ fundraiserData, onEditSuccess }) {
     const navigate = useNavigate();
@@ -75,11 +76,11 @@ function EditFundraiserForm({ fundraiserData, onEditSuccess }) {
         </div>
         <div>
             <label htmlFor="description">Description:</label>
-            <input
-                type="text"
-                id="description"
+            <textarea 
+                id="description" 
                 value={credentials.description}
                 onChange={handleChange}
+                rows={5}
             />
         </div>
         <div>
@@ -118,14 +119,19 @@ function EditFundraiserForm({ fundraiserData, onEditSuccess }) {
                 onChange={handleChange}
             />
         </div>
-        <div>
-            <label htmlFor="is_open">Open for pledges?</label>
-            <input type="checkbox" id="is_open" defaultChecked={fundraiserData.is_open} onChange={(e) => 
-            setCredentials({...credentials, is_open: e.target.checked})}
+        <div className="checkbox-group">
+            <label htmlFor="is_open">Open to pledges:</label>
+            <input
+                type="checkbox"
+                id="is_open"
+                defaultChecked={fundraiserData.is_open}
+                onChange={(e) =>
+                    setCredentials({ ...credentials, is_open: e.target.checked })
+                }
             />
         </div>
         {error && <p style={{color: "red"}}>{error}</p>}
-        <button type="submit" onClick={handleSubmit}>Edit Fundraiser</button>
+        <button type="submit" onClick={handleSubmit} className="secondary-btn btn-special">Edit Fundraiser</button>
     </form>
 );
 }

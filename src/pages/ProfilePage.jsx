@@ -19,24 +19,36 @@ function ProfilePage() {
    if (error) {
     return (<p>{error.message}</p>)
    };
-console.log(userProfile)
-return (
-    <div>
-        <h2>{userProfile.user.name}</h2>
-        <p>{userProfile.user.username}</p>
-        <h2>{userProfile.user.suburb} {userProfile.user.postcode}</h2>
-        <p>{userProfile.userId}</p>
-        
-        <h3>My Fundraisers</h3>
-        {userProfile.fundraisers.map((fundraiserData, key) => (
-            <FundraiserPreview key={key} fundraiserData={fundraiserData} />
-        ))}
 
-        <h3>My Pledges</h3>
-        {userProfile.pledges?.map((pledgeData, key) => (
-            <PledgesPreview key={key} pledgeData={pledgeData} />
-        ))}
-    </div>
+return (
+        <div className="profile-page-container">
+            <div className="profile-card">
+                <h2>{userProfile.user.name}</h2>
+                <p>{userProfile.user.username}</p>
+                <h2>{userProfile.user.suburb} {userProfile.user.postcode}</h2>
+                <p>{userProfile.userId}</p>
+            </div>    
+        
+            <div className="fundraiser-list">
+                <h3>My Fundraisers</h3>
+                {userProfile.fundraisers.length === 0 && (
+                    <p>No fundraisers yet.</p>
+                    )}
+                {userProfile.fundraisers.map((fundraiserData, key) => (
+                    <FundraiserPreview key={key} fundraiserData={fundraiserData} />
+                ))}
+            </div>
+
+            <div className="pledge-list">
+                <h3>My Pledges</h3>
+                {userProfile.pledges.length === 0 && (
+                    <p>No pledges yet.</p>
+                    )}
+                {userProfile.pledges?.map((pledgeData, key) => (
+                    <PledgesPreview key={key} pledgeData={pledgeData} />
+                ))}
+            </div>
+        </div>
 )
 }
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import postPledge from "../api/post-pledge.js";
-import useAuth from "../hooks/use-auth.js"
+import useAuth from "../hooks/use-auth.js";
 
 function PledgeForm({ fundraiserId, onPledgeSuccess }) {
     const navigate = useNavigate();
@@ -45,34 +45,42 @@ function PledgeForm({ fundraiserId, onPledgeSuccess }) {
    };
 
     return (
-        <form>
-            <div>
-                <label htmlFor="amount">Amount:</label>
-                <input
-                    type="number"
-                    step="1"
-                    id="amount"
-                    placeholder="Amount (whole numbers only)"
+        <div
+        className="pledges-form-container"
+        style={{
+            maxWidth: "500px",
+            margin: "30px auto"}}
+        >
+            <form>
+                <div>
+                    <label htmlFor="amount">Amount:</label>
+                    <input
+                        type="number"
+                        step="1"
+                        id="amount"
+                        placeholder="Amount (whole numbers only)"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="comment">Comment:</label>
+                    <textarea 
+                    id="comment" 
+                   placeholder="Enter a comment"
                     onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="comment">Comment:</label>
-                <input type="text"
-                id="comment"
-                placeholder="Enter a comment"
-                onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="anonymous">Anonymous</label>
-                <input type="checkbox" id="anonymous" onChange={(e) => 
-                setCredentials({...credentials, anonymous: e.target.checked})}
-                />
-            </div>
-            {error && <p style={{color: "red"}}>{error}</p>}
-            <button type="submit" onClick={handleSubmit}>Make a Pledge</button>
-        </form>
+                    rows={2}
+                    />
+                </div>
+                <div className="checkbox-group">
+                    <label htmlFor="anonymous">Anonymous:</label>
+                    <input type="checkbox" id="anonymous" onChange={(e) => 
+                    setCredentials({...credentials, anonymous: e.target.checked})}
+                    />
+                </div>
+                <button type="submit" onClick={handleSubmit} className="primary-btn">Make a Pledge</button>
+                {error && <p style={{color: "red"}}>{error}</p>}
+            </form>
+    </div>
     );
 }
 

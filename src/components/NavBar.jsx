@@ -23,7 +23,9 @@ function NavBar() {
                 
                 <nav>
                     <div className="nav-left">
-                        <img src={logo} className="logo" alt="Community Change logo" />
+                        <NavLink to="/">
+                            <img src={logo} className="logo" alt="Community Change logo" />
+                        </NavLink>
                         <NavLink to="/">Home</NavLink>
                         <NavLink to="/about">About</NavLink>
                         <NavLink to="/contact">Contact</NavLink>
@@ -42,8 +44,10 @@ function NavBar() {
                         )}
                     </div>
                 </nav>
-                <Outlet />
-                <Footer />
+                <div style={{ flex: 1 }}>
+    <Outlet />
+</div>
+<Footer />
             </div>
     )
 }

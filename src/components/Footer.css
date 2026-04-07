@@ -1,6 +1,6 @@
 footer {
   background-color: var(--primary);
-  padding: 40px;
+  padding: 20px;
   text-align: center;
   width: 100%;
   line-height: 30px;
@@ -8,4 +8,8 @@ footer {
 
 .logo2 {
   width: 15%;
+}
+
+.ps {
+  font-size: 0.7rem;
 }

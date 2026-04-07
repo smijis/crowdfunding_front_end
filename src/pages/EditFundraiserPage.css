@@ -1,0 +1,86 @@
+.edit-page-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.edit-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.edit-form-wrapper {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 20px 20px 20px 20px;
+}
+
+.delete-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ed2100;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  text-decoration: underline;
+}
+
+.delete-window {
+  margin-top: 15px;
+  background: #fff5f5;
+  border: 1px solid #f5c2c2;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.delete-window p {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.delete-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.confirm-delete {
+  background-color: #ed2100;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+}
+
+.confirm-delete:hover {
+  background-color: red;
+}
+
+.cancel-delete {
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.cancel-delete:hover {
+  background: #f5f5f5;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  font-size: 0.95rem;
+  padding: 20px 0 0 0;
+}

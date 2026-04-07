@@ -46,23 +46,32 @@ console.log("auth.username:", auth.username);
                 <img src={fundraiser.image} className="fundraiser-image" alt="Image of Fundraiser" />
                 <div className="right-column">
                     <div className="information">
-                        <h3>Created by: {fundraiser.owner_username}</h3>
-                        <h3>Created on: {fundraiser.date_created?.slice(0, 10)}</h3>
-                        <h3>Status: {fundraiser.is_open ? "Open" : "Closed"}</h3>
-                        <h3>Fundraiser closes on: {fundraiser.deadline?.slice(0, 10)}</h3>
+                        <div className="info-row"><h4>Created by: </h4><h3> {fundraiser.owner_username}</h3></div>
+                        <div className="info-row"><h4>Location:</h4><h3> {fundraiser.suburb}, {fundraiser.postcode}</h3></div>
+                        <div className="info-row"><h4>Created on:</h4><h3> {fundraiser.date_created?.slice(0, 10)}</h3></div>
+                        <div className="info-row"><h4>Status:</h4><h3> {fundraiser.is_open ? "Open" : "Closed"}</h3></div>
+                        <div className="info-row"><h4>Fundraiser closes on:</h4><h3> {fundraiser.deadline?.slice(0, 10)}</h3></div>
                     </div>
                     <p className="description">{fundraiser.description}</p>
-                    </div>
                 </div>
+            </div>
            <div className="pledges-card">
                 <div className="pledges-header">
                     <h3>Pledges</h3>
-                    {auth.token && (
-                    <button className="secondary-btn" onClick={toggleModal}>
-                        Make a Pledge
-                    </button>
+                    {!isOpen && (
+                        auth.token ? (
+                            <button className="secondary-btn" onClick={toggleModal}>
+                                Make a Pledge
+                            </button>
+                        ) : (
+                            <p className="p-signin">Please <Link to="/login" className="signin-link">sign in</Link> to make a pledge.</p>
+                        )
                     )}
                 </div>
+                
+                {fundraiser.pledges.length === 0 && (
+                    <p className="no-pledges">No pledges yet. Be the first to support this fundraiser!</p>
+                )}
 
                 {isOpen && (
                     <div className="pledge-form">
@@ -75,7 +84,7 @@ console.log("auth.username:", auth.username);
                     {fundraiser.pledges.map((pledgeData, key) => (
                     <li key={key}>
                         <span className="pledge-info">
-                        {pledgeData.amount} from {pledgeData.supporter} - {pledgeData.comment}
+                            ${pledgeData.amount} from {pledgeData.supporter || "Anonymous"} - {pledgeData.comment}
                         </span>
                         {auth.token && pledgeData.supporter === auth.username && (
                         <button className="edit-btn" onClick={() => setEditingPledge(pledgeData)}>Edit</button>

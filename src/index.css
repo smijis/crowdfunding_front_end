@@ -12,6 +12,12 @@
   --body-font: "Inter", sans-serif;
 }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -69,4 +75,45 @@ a.active {
 
 .primary-btn:hover {
   background-color: var(--secondary);
+}
+
+.secondary-btn {
+  background-color: var(--secondary);
+  color: white;
+  cursor: pointer;
+  padding: 14px 28px;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+}
+
+.secondary-btn:hover {
+  background-color: var(--primary);
+}
+
+.edit-btn {
+  color: var(--secondary);
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 999px;
+}
+
+.edit-btn:hover {
+  text-decoration: underline;
+  color: var(--secondary);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+  transform: scale(1.5);
 }

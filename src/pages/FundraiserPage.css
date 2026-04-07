@@ -26,6 +26,8 @@
   border: none;
   background: rgb(239, 239, 239);
   margin-right: 50px;
+  font-weight: normal;
+  border-radius: 999px;
 }
 
 .edit-fundraiser:hover {
@@ -37,6 +39,12 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+}
+
+.info-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .fundraiser-image {
@@ -84,25 +92,12 @@
   margin: 40px 20px 0px 20px;
 }
 
-.secondary-btn {
-  background-color: var(--secondary);
-  color: white;
-  cursor: pointer;
-  padding: 14px 28px;
-  font-size: 1rem;
-  border-radius: 999px;
-  border: none;
-}
-
-.secondary-btn:hover {
-  background-color: var(--primary);
-}
-
 .pledges-card {
   background: var(--cardbackground);
-  padding: 30px 40px;
+  padding: 30px 40px 30px 40px;
   border-radius: 16px;
   max-width: 800px;
+  min-width: 800px;
   margin: 40px auto;
 }
 
@@ -113,6 +108,9 @@
   margin-bottom: 20px;
   color: var(--primary);
   font-size: 1.5rem;
+}
+
+.secondary-btn {
 }
 
 .pledge-list {
@@ -137,21 +135,27 @@
   font-size: 1rem;
 }
 
-.edit-btn {
-  color: var(--secondary);
-  cursor: pointer;
-  padding: 5px 10px;
-  font-size: 1rem;
-  border: none;
-}
-
-.edit-btn:hover {
-  text-decoration: underline;
-  color: var(--secondary);
-}
-
 .x {
   float: right;
+  background: transparent;
+  border: none;
+  transform: scale(1.5);
+  padding: 0 50px 0 0;
+  cursor: pointer;
+}
+
+.no-pledges {
+  font-style: italic;
+}
+
+.p-signin {
+  font-size: 1rem;
+}
+
+.signin-link {
+  background: transparent;
+  text-decoration: underline;
+  color: var(--primary);
 }
 
 @media (max-width: 768px) {

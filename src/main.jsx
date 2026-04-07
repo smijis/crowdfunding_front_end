@@ -12,6 +12,7 @@ import ContactPage from "./pages/ContactPage.jsx";
 import CreateFundraiserPage from "./pages/CreateFundraiserPage.jsx";
 import EditFundraiserPage from "./pages/EditFundraiserPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 //import our components
 import NavBar from "./components/NavBar.jsx";
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
       { path: "/fundraiser/:id/edit", element: <EditFundraiserPage />},
       { path: "/about", element: <AboutPage />},
       { path: "/contact", element: <ContactPage />},
-      { path: "/profile/:id", element: <ProfilePage />}
+      { path: "/profile/:id", element: <ProfilePage />},
+      { path: "*", element: <NotFoundPage /> },
     ]
   },
 ]);

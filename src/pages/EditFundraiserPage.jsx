@@ -15,44 +15,65 @@ function EditFundraiserPage() {
     const [showConfirm, setShowConfirm] = useState(false);
 
     const handleDelete = () => {
-        if (fundraiser.pledges.length === 0) {
-            deleteFundraiser(id).then((response) => {
-                console.log(response);
-                setDeleteError("Fundraiser deleted.");
-                setTimeout(() => {
-                    navigate("/");
-                }, 1000);
-            }).catch((deleteError) => {
-                setDeleteError(deleteError.message);
-            });
-        } else {
-            setDeleteError("Cannot delete fundraiser with pledges.");
-        }
+        deleteFundraiser(id).then((response) => {
+            setDeleteError("Fundraiser deleted.");
+            setTimeout(() => {
+                navigate("/");
+            }, 1000);
+        }).catch((deleteError) => {
+            setDeleteError(deleteError.message);
+        });
     };
-
+    
     if (isLoading) {
         return (<p>loading...</p>)
     };
     if (error) {
-    return (<p>{error.message}</p>)
-   };
+        return (<p>{error.message}</p>)
+    };
+
    return (
-    <div>
-        <EditFundraiserForm fundraiserData={fundraiser} onEditSuccess={() => navigate(`/fundraiser/${id}`)} />
-        {deleteError && <p style={{color: "red"}}>{deleteError}</p>}
-        <div>
-            <button onClick={() => setShowConfirm(true)}>Delete Fundraiser</button>
-            {showConfirm && (
-                <div className="delete-window">
-                    <p>Are you sure you want to delete this fundraiser? This cannot be undone. If you want to pause collecting pledges, you can close it instead.</p>
-                    <button onClick={handleDelete}>Yes, delete</button>
-                    <button onClick={() => setShowConfirm(false)}>Cancel</button>  
-                </div>
-            )}
-        </div>
+    <div className="edit-page-container">
+      <h1 className="edit-title">Edit Fundraiser</h1>
+  
+      <div className="edit-form-wrapper">
+        <EditFundraiserForm 
+          fundraiserData={fundraiser} 
+          onEditSuccess={() => navigate(`/fundraiser/${id}`)} 
+        />
+      </div>
+        <div className="delete-section">
+            <button className="delete-btn" onClick={() => {
+                if (fundraiser.pledges.length > 0) {
+                    setDeleteError("Cannot delete a fundraiser with existing pledges.");
+                } else {
+                    setShowConfirm(true);
+                    setDeleteError("");
+                }
+            }}>
+                Delete Fundraiser
+            </button>
+            {deleteError && <p className="error-message">{deleteError}</p>}
+  
+        {showConfirm && (
+          <div className="delete-window">
+            <p>
+              Are you sure you want to delete this fundraiser? This cannot be undone.
+            </p>
+            <div className="delete-actions">
+              <button className="confirm-delete" onClick={handleDelete}>
+                Yes, delete
+              </button>
+              <button className="cancel-delete" onClick={() => setShowConfirm(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
-   );
-};
+  );
+}
 
 export default EditFundraiserPage;
 

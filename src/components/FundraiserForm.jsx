@@ -55,77 +55,86 @@ function FundraiserForm() {
    };
 
     return (
-        <form>
-            <div>
-                <label htmlFor="title">Title:</label>
-                <input type="text"
-                id="title"
-                placeholder="Title"
-                onChange={handleChange}
-                />
+        <div className="create-page-container">
+            <h1 className="create-title">Start a Fundraiser</h1>
+            <div className="create-form-wrapper">
+                <form>
+                    <div>
+                        <label htmlFor="title">Title:</label>
+                        <input type="text"
+                        id="title"
+                        placeholder="Title"
+                        onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="image">Image:</label>
+                        <input type="text"
+                        id="image"
+                        placehold="Enter image URL"
+                        onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="description">Description:</label>
+                        <textarea 
+                        id="description" 
+                        value={credentials.description}
+                        onChange={handleChange}
+                        rows={5}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="suburb">Suburb:</label>
+                        <input
+                            type="text"
+                            id="suburb"
+                            placeholder="Suburb"
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="postcode">Postcode:</label>
+                        <input
+                            type="number"
+                            id="postcode"
+                            placeholder="Postcode"
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="goal">Goal:</label>
+                        <input
+                            type="number"
+                            id="goal"
+                            placeholder="Goal"
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="deadline">Deadline:</label>
+                        <input
+                            type="date"
+                            id="deadline"
+                            value={credentials.deadline}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="checkbox-group">
+                        <label htmlFor="is_open">Open to pledges:</label>
+                        <input
+                            type="checkbox"
+                            id="is_open"
+                            onChange={(e) =>
+                                setCredentials({ ...credentials, is_open: e.target.checked })
+                            }
+                        />
+                    </div>
+                    <button type="submit" onClick={handleSubmit} className="primary-btn">Create Fundraiser</button>
+                    {error && <p style={{color: "red"}}>{error}</p>}
+                </form>
             </div>
-            <div>
-                <label htmlFor="image">Image:</label>
-                <input type="text"
-                id="image"
-                placehold="Enter image URL"
-                onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="description">Description:</label>
-                <input
-                    type="text"
-                    id="description"
-                    placeholder="Description"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="suburb">Suburb:</label>
-                <input
-                    type="text"
-                    id="suburb"
-                    placeholder="Suburb"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="postcode">Postcode:</label>
-                <input
-                    type="number"
-                    id="postcode"
-                    placeholder="Postcode"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="goal">Goal:</label>
-                <input
-                    type="number"
-                    id="goal"
-                    placeholder="Goal"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="deadline">Deadline:</label>
-                <input
-                    type="date"
-                    id="deadline"
-                    value={credentials.deadline}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="is_open">Open for pledges?</label>
-                <input type="checkbox" id="is_open" onChange={(e) => 
-                setCredentials({...credentials, is_open: e.target.checked})}
-                />
-            </div>
-            {error && <p style={{color: "red"}}>{error}</p>}
-            <button type="submit" onClick={handleSubmit}>Create Fundraiser</button>
-        </form>
+        </div> 
     );
 }
 

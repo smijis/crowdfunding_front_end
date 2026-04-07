@@ -53,15 +53,19 @@ function EditPledgeForm({ pledgeData, onEditSuccess }) {
                 onChange={handleChange}
                 />
             </div>
-            <div>
+            <div className="checkbox-group">
                 <label htmlFor="anonymous">Anonymous</label>
-                <input type="checkbox" id="anonymous" 
+                <input
+                type="checkbox"
+                id="anonymous"
                 defaultChecked={pledgeData.anonymous}
-                onChange={(e) => setCredentials({...credentials, anonymous: e.target.checked})}
-                />
+                onChange={(e) =>
+                    setCredentials({ ...credentials, anonymous: e.target.checked })
+                }
+            />
             </div>
             {error && <p style={{color: "red"}}>{error}</p>}
-            <button type="submit" onClick={handleSubmit}>Save Changes</button>
+            <button type="submit" onClick={handleSubmit} className="secondary-btn">Save Changes</button>
         </form>
     );
 }
