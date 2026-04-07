@@ -25,7 +25,7 @@ body {
 }
 
 .edit-fundraiser {
-  margin-left: auto;
+  margin-left: 20px;
   margin-right: 50px;
   text-align: center;
   color: var(--secondary);
@@ -106,7 +106,7 @@ body {
   padding: 30px 40px 30px 40px;
   border-radius: 16px;
   max-width: 100%;
-  min-width: unset;
+  min-width: 70%;
   margin: 40px auto;
 }
 

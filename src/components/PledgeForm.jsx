@@ -51,35 +51,37 @@ function PledgeForm({ fundraiserId, onPledgeSuccess }) {
             maxWidth: "500px",
             margin: "30px auto"}}
         >
-            <form>
-                <div>
-                    <label htmlFor="amount">Amount:</label>
-                    <input
-                        type="number"
-                        step="1"
-                        id="amount"
-                        placeholder="Amount (whole numbers only)"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="comment">Comment:</label>
-                    <textarea 
-                    id="comment" 
-                   placeholder="Enter a comment"
-                    onChange={handleChange}
-                    rows={2}
-                    />
-                </div>
-                <div className="checkbox-group">
-                    <label htmlFor="anonymous">Anonymous:</label>
-                    <input type="checkbox" id="anonymous" onChange={(e) => 
-                    setCredentials({...credentials, anonymous: e.target.checked})}
-                    />
-                </div>
-                <button type="submit" onClick={handleSubmit} className="primary-btn">Make a Pledge</button>
-                {error && <p style={{color: "red"}}>{error}</p>}
-            </form>
+        <form onSubmit={handleSubmit}>
+        <div>
+            <label htmlFor="amount">Amount:</label>
+            <input
+            type="number"
+            step="1"
+            id="amount"
+            placeholder="Amount (whole numbers only)"
+            onChange={handleChange}
+            />
+        </div>
+        <div>
+            <label htmlFor="comment">Comment:</label>
+            <textarea 
+            id="comment" 
+            placeholder="Enter a comment"
+            onChange={handleChange}
+            rows={2}
+            />
+        </div>
+        <div className="checkbox-group">
+            <label htmlFor="anonymous">Anonymous:</label>
+            <input 
+            type="checkbox" 
+            id="anonymous" 
+            onChange={(e) => setCredentials({...credentials, anonymous: e.target.checked})}
+            />
+        </div>
+        <button type="submit" className="primary-btn">Make a Pledge</button>
+        {error && <p style={{color: "red"}}>{error}</p>}
+        </form>
     </div>
     );
 }

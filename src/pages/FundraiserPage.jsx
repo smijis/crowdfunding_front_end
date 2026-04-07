@@ -75,7 +75,7 @@ function FundraiserPage() {
                 {isOpen && (
                     <div className="pledge-form">
                     <button className="x" onClick={() => setIsOpen(false)}>✕</button>
-                    <PledgeForm fundraiserId={id} onPledgeSuccess={refetch} />
+                    <PledgeForm fundraiserId={id} onPledgeSuccess={() => {refetch(); setIsOpen(false); }} />
                     </div>
                 )}
 

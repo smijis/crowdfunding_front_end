@@ -47,8 +47,11 @@ To submit, fill out this Google form, including a link to your Github repo. Your
 
 Please include the following in your readme doc:
 
-- A link to the deployed project
+- A link to the deployed project (https://shecodescrowdfunding.netlify.app/)
 - A screenshot of the homepage
+  ![Homepage Screenshot](./assets/homepage-screenshot.png)
 - A screenshot of the fundraiser creation page/A screenshot of the fundraiser creation form
+  ![Create Fundraiser Screenshot](./assets/createfundraiser-screenshot.png)
 - A screenshot of a fundraiser with pledges
+  ![Fundraiser with Pledges Screenshot](./assets/fundraiserwithpledges-screenshot.png)
 - A screenshot of the resulting page when an unauthorized user attempts to edit a fundraiser (optional, depending on whether or not this functionality makes sense in your app!) - For my app, the option to edit a fundraiser is not visible unless you are the owner of the fundraiser.
