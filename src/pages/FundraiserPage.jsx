@@ -85,7 +85,7 @@ function FundraiserPage() {
                         <span className="pledge-info">
                             ${pledgeData.amount} from {pledgeData.supporter || "Anonymous"} - {pledgeData.comment}
                         </span>
-                        {auth.token && (pledgeData.supporter === auth.username || pledgeData.is_mine) && (
+                        {auth.token && (pledgeData.supporter === auth.username || pledgeData.is_mine) && !editingPledge && (
                             <button className="edit-btn" onClick={() => setEditingPledge(pledgeData)}>Edit</button>
                         )}
                         {editingPledge?.id === pledgeData.id && (
